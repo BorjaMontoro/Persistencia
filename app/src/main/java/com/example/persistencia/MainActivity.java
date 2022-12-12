@@ -26,11 +26,13 @@ public class MainActivity extends AppCompatActivity {
         try{
             File dir= getFilesDir();
             File archivo=new File(dir,"dades.txt");
-            FileWriter escribir=new FileWriter(archivo);
-            String mensaje="Lorem Ipsum is simply dummy text of the printing and typesetting industry.\n";
-            escribir.write(mensaje);
-            escribir.flush();
-            escribir.close();
+            if (!archivo.exists()) {
+                FileWriter escribir = new FileWriter(archivo);
+                String mensaje = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.\n";
+                escribir.write(mensaje);
+                escribir.flush();
+                escribir.close();
+            }
             actualizarEditText();
             b.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
